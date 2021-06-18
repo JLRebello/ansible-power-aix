@@ -954,13 +954,20 @@ def run_parser(report):
     note:
         Create and build results['meta']['1.parse']
     """
+    global module
+    protocol = module.params['protocol']
+
     dict_rows = csv.DictReader(report, delimiter='|')
     pattern = re.compile(r'^(http|https|ftp)://(aix.software.ibm.com|public.dhe.ibm.com)'
                          r'/(aix/ifixes/.*?/|aix/efixes/security/.*?.tar)$')
 
     rows = []
     for row in dict_rows:
-        rows.append(row['Download URL'])
+        row = row['Download URL']
+        if protocol:
+            row = re.sub(r'^(http|https|ftp)', protocol, row, count=1)
+
+        rows.append(row)
     selected_rows = [row for row in rows if pattern.match(row) is not None]
 
     rows = list(set(selected_rows))  # remove duplicates
@@ -1274,29 +1281,21 @@ def main():
     module.debug('*** PARSE ***')
 
 
-    print("                               JULIA PARSE. PROTOCOL:                             ")
-    print(protocol)
-    print("                                                                                  ")
-    if protocol:
-        print("                        JULIA INSIDE PROTOCOL IF IN PARSE                     ")
-        if protocol == "ftp":
-	        rep = ftp_replace
-        elif protocol == "http":
-            rep = http_replace
-        elif protocol == "https":
-            rep = https_replace
-            https_flag = True
-        for x in range(len(results['meta']['0.report'])):
-            print("                                                                          ")
-            print(x)
-            print(":  ")
-            print(results['meta']['0.report'][x])
-            print("                        ")
-            if https_flag: #in case of report already having 'https' as protocol, replace 'https' with something 'https' will catch so there's no change.
-                results['meta']['0.report'][x] = results['meta']['0.report'][x].replace('https', 'ftp')
-            results['meta']['0.report'][x] = results['meta']['0.report'][x].replace(rep[0], protocol).replace(rep[1], protocol)
-            print(results['meta']['0.report'][x])
-            print("                                                                          ")
+    # if protocol:
+    #     if protocol == "ftp":
+	#         rep = ftp_replace
+    #     elif protocol == "http":
+    #         rep = http_replace
+    #     elif protocol == "https":
+    #         rep = https_replace
+    #         https_flag = True
+    #     for x in range(len(results['meta']['0.report'])):
+    #         #in case of report already having 'https' as protocol, replace 'https' with 
+    #         # something 'https' will catch so there's no change.
+    #         if https_flag: 
+    #             results['meta']['0.report'][x] = results['meta']['0.report'][x].replace('https', 'ftp')
+    #         results['meta']['0.report'][x] = \
+    #             results['meta']['0.report'][x].replace(rep[0], protocol).replace(rep[1], protocol)
 
 
     run_parser(results['meta']['0.report'])
