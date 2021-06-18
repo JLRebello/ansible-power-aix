@@ -1,0 +1,16 @@
+---
+- name: FLRTVC test playbook
+  hosts: pedro1
+  gather_facts: no
+  remote_user: root
+  tasks:
+  - name: Attempting to setup flrtvc
+    flrtvc:
+      apar: all
+      download_only: True
+      path: /ansible_test
+      save_report: True
+    register: output
+
+  - debug:
+      var: output

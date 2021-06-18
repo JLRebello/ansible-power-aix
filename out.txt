@@ -1,0 +1,437 @@
+ansible-playbook 2.9.18
+  config file = /etc/ansible/ansible.cfg
+  configured module search path = ['/home/jrebello/ansible_collections/ibm/power_aix']
+  ansible python module location = /usr/lib/python3.6/site-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.6.8 (default, Aug 18 2020, 12:45:08) [GCC 8.3.1 20191121 (Red Hat 8.3.1-5)]
+Using /etc/ansible/ansible.cfg as config file
+host_list declined parsing /home/jrebello/ansible_collections/ibm/power_aix/my_test_playbooks/inventory.yml as it did not pass its verify_file() method
+script declined parsing /home/jrebello/ansible_collections/ibm/power_aix/my_test_playbooks/inventory.yml as it did not pass its verify_file() method
+Parsed /home/jrebello/ansible_collections/ibm/power_aix/my_test_playbooks/inventory.yml inventory source with yaml plugin
+Skipping callback 'actionable', as we already have a stdout callback.
+Skipping callback 'counter_enabled', as we already have a stdout callback.
+Skipping callback 'debug', as we already have a stdout callback.
+Skipping callback 'dense', as we already have a stdout callback.
+Skipping callback 'dense', as we already have a stdout callback.
+Skipping callback 'full_skip', as we already have a stdout callback.
+Skipping callback 'json', as we already have a stdout callback.
+Skipping callback 'minimal', as we already have a stdout callback.
+Skipping callback 'null', as we already have a stdout callback.
+Skipping callback 'oneline', as we already have a stdout callback.
+Skipping callback 'selective', as we already have a stdout callback.
+Skipping callback 'skippy', as we already have a stdout callback.
+Skipping callback 'stderr', as we already have a stdout callback.
+Skipping callback 'unixy', as we already have a stdout callback.
+Skipping callback 'yaml', as we already have a stdout callback.
+
+PLAYBOOK: demo2_flrtvc.yml **********************************************************************************************************
+1 plays in my_test_playbooks/demo2_flrtvc.yml
+
+PLAY [FLRTVC on AIX playbook] *******************************************************************************************************
+META: ran handlers
+
+TASK [testing FLRTVC] ***************************************************************************************************************
+task path: /home/jrebello/ansible_collections/ibm/power_aix/my_test_playbooks/demo2_flrtvc.yml:7
+<hotfox.aus.stglabs.ibm.com> ESTABLISH SSH CONNECTION FOR USER: root
+<hotfox.aus.stglabs.ibm.com> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="root"' -o ConnectTimeout=10 -o ControlPath=/home/jrebello/.ansible/cp/e2023233fd hotfox.aus.stglabs.ibm.com '/bin/sh -c '"'"'echo ~root && sleep 0'"'"''
+<hotfox.aus.stglabs.ibm.com> (0, b'/\n', b'X11 forwarding request failed\r\n')
+<hotfox.aus.stglabs.ibm.com> ESTABLISH SSH CONNECTION FOR USER: root
+<hotfox.aus.stglabs.ibm.com> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="root"' -o ConnectTimeout=10 -o ControlPath=/home/jrebello/.ansible/cp/e2023233fd hotfox.aus.stglabs.ibm.com '/bin/sh -c '"'"'( umask 77 && mkdir -p "` echo /.ansible/tmp `"&& mkdir "` echo /.ansible/tmp/ansible-tmp-1623875382.994737-842524-176802214372740 `" && echo ansible-tmp-1623875382.994737-842524-176802214372740="` echo /.ansible/tmp/ansible-tmp-1623875382.994737-842524-176802214372740 `" ) && sleep 0'"'"''
+<hotfox.aus.stglabs.ibm.com> (0, b'ansible-tmp-1623875382.994737-842524-176802214372740=/.ansible/tmp/ansible-tmp-1623875382.994737-842524-176802214372740\n', b'X11 forwarding request failed\r\n')
+<pedro1> Attempting python interpreter discovery
+<hotfox.aus.stglabs.ibm.com> ESTABLISH SSH CONNECTION FOR USER: root
+<hotfox.aus.stglabs.ibm.com> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="root"' -o ConnectTimeout=10 -o ControlPath=/home/jrebello/.ansible/cp/e2023233fd hotfox.aus.stglabs.ibm.com '/bin/sh -c '"'"'echo PLATFORM; uname; echo FOUND; command -v '"'"'"'"'"'"'"'"'/usr/bin/python'"'"'"'"'"'"'"'"'; command -v '"'"'"'"'"'"'"'"'python3.7'"'"'"'"'"'"'"'"'; command -v '"'"'"'"'"'"'"'"'python3.6'"'"'"'"'"'"'"'"'; command -v '"'"'"'"'"'"'"'"'python3.5'"'"'"'"'"'"'"'"'; command -v '"'"'"'"'"'"'"'"'python2.7'"'"'"'"'"'"'"'"'; command -v '"'"'"'"'"'"'"'"'python2.6'"'"'"'"'"'"'"'"'; command -v '"'"'"'"'"'"'"'"'/usr/libexec/platform-python'"'"'"'"'"'"'"'"'; command -v '"'"'"'"'"'"'"'"'/usr/bin/python3'"'"'"'"'"'"'"'"'; command -v '"'"'"'"'"'"'"'"'python'"'"'"'"'"'"'"'"'; echo ENDFOUND && sleep 0'"'"''
+<hotfox.aus.stglabs.ibm.com> (0, b'PLATFORM\nAIX\nFOUND\n/usr/bin/python\n/usr/bin/python2.7\n/usr/bin/python\nENDFOUND\n', b'X11 forwarding request failed\r\n')
+<pedro1> Python interpreter discovery fallback (unsupported platform for extended discovery: aix)
+Using module file /home/jrebello/ansible_collections/ibm/power_aix/plugins/modules/flrtvc.py
+<hotfox.aus.stglabs.ibm.com> PUT /home/jrebello/.ansible/tmp/ansible-local-842517mo3c528m/tmpbaauecys TO /.ansible/tmp/ansible-tmp-1623875382.994737-842524-176802214372740/AnsiballZ_flrtvc.py
+<hotfox.aus.stglabs.ibm.com> SSH: EXEC sftp -b - -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="root"' -o ConnectTimeout=10 -o ControlPath=/home/jrebello/.ansible/cp/e2023233fd '[hotfox.aus.stglabs.ibm.com]'
+<hotfox.aus.stglabs.ibm.com> (0, b'sftp> put /home/jrebello/.ansible/tmp/ansible-local-842517mo3c528m/tmpbaauecys /.ansible/tmp/ansible-tmp-1623875382.994737-842524-176802214372740/AnsiballZ_flrtvc.py\n', b'')
+<hotfox.aus.stglabs.ibm.com> ESTABLISH SSH CONNECTION FOR USER: root
+<hotfox.aus.stglabs.ibm.com> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="root"' -o ConnectTimeout=10 -o ControlPath=/home/jrebello/.ansible/cp/e2023233fd hotfox.aus.stglabs.ibm.com '/bin/sh -c '"'"'chmod u+x /.ansible/tmp/ansible-tmp-1623875382.994737-842524-176802214372740/ /.ansible/tmp/ansible-tmp-1623875382.994737-842524-176802214372740/AnsiballZ_flrtvc.py && sleep 0'"'"''
+<hotfox.aus.stglabs.ibm.com> (0, b'', b'X11 forwarding request failed\r\n')
+<hotfox.aus.stglabs.ibm.com> ESTABLISH SSH CONNECTION FOR USER: root
+<hotfox.aus.stglabs.ibm.com> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="root"' -o ConnectTimeout=10 -o ControlPath=/home/jrebello/.ansible/cp/e2023233fd -tt hotfox.aus.stglabs.ibm.com '/bin/sh -c '"'"'/usr/bin/python /.ansible/tmp/ansible-tmp-1623875382.994737-842524-176802214372740/AnsiballZ_flrtvc.py && sleep 0'"'"''
+<hotfox.aus.stglabs.ibm.com> (0, b'                               PROTOCOL\r\nhttps\r\n            \r\n        INSIDE PROTOCOL IF IN PARSE       \r\n          JULIA PARSE:        \r\n0\r\n:  \r\nFileset|Current Version|Type|EFix Installed|Abstract|Unsafe Versions|APARs|Bulletin URL|Download URL|CVSS Base Score|Reboot Required|Last Update|Fixed In\r\n                        \r\n1\r\n:  \r\nbos.mp64|7.2.5.0|sec||NOT FIXED - IBM has released AIX iFixes in response to a vulnerability in IBM POWER9|7.2.5.0-7.2.5.1|IJ28226 / CVE-2020-4788|https://aix.software.ibm.com/aix/efixes/security/power9_advisory.asc|https://aix.software.ibm.com/aix/efixes/security/power9_fix.tar|CVE-2020-4788:5.1|YES|11/19/2020|7200-05-02\r\n                        \r\n2\r\n:  \r\nbos.mp64|7.2.5.0|sec||NOT FIXED - IBM has released VIOS iFixes in response to a vulnerability in IBM POWER9|7.2.5.0-7.2.5.1|IJ28226 / CVE-2020-4788|https://aix.software.ibm.com/aix/efixes/security/power9_advisory.asc|https://aix.software.ibm.com/aix/efixes/security/power9_fix.tar|CVE-2020-4788:5.1|YES|11/19/2020|3.1.2.20\r\n                        \r\n3\r\n:  \r\nbos.mp64|7.2.5.0|sec||NOT FIXED - Vulnerability in gencore affects AIX|7.2.5.0-7.2.5.1|IJ28828 / CVE-2020-4887|https://aix.software.ibm.com/aix/efixes/security/gencore_advisory.asc|https://aix.software.ibm.com/aix/efixes/security/gencore_fix.tar|CVE-2020-4887:6.2|YES|01/19/2021|7200-05-02\r\n                        \r\n4\r\n:  \r\nbos.mp64|7.2.5.0|sec||NOT FIXED - Vulnerability in gencore affects AIX|7.2.5.0-7.2.5.1|IJ28828 / CVE-2020-4887|https://aix.software.ibm.com/aix/efixes/security/gencore_advisory.asc|https://aix.software.ibm.com/aix/efixes/security/gencore_fix.tar|CVE-2020-4887:6.2|YES|01/19/2021|3.1.2.20\r\n                        \r\n5\r\n:  \r\nbos.net.tcp.bind_utils|7.2.5.0|sec||NOT FIXED - There are vulnerabilities in BIND that impact AIX.|7.2.5.0-7.2.5.1|IJ29232 / CVE-2020-8622|https://aix.software.ibm.com/aix/efixes/security/bind_advisory18.asc|https://aix.software.ibm.com/aix/efixes/security/bind_fix18.tar|CVE-2020-8622:6.5|NO|12/18/2020|7200-05-02\r\n                        \r\n6\r\n:  \r\nbos.net.tcp.bind_utils|7.2.5.0|sec||NOT FIXED - There are vulnerabilities in BIND that impact VIOS.|7.2.5.0-7.2.5.1|IJ29232 / CVE-2020-8622|https://aix.software.ibm.com/aix/efixes/security/bind_advisory18.asc|https://aix.software.ibm.com/aix/efixes/security/bind_fix18.tar|CVE-2020-8622:6.5|NO|12/18/2020|3.1.2.20\r\n                        \r\n7\r\n:  \r\nopenssl.base|1.0.2.2100|sec||NOT FIXED - Vulnerabilities in OpenSSL affect AIX|1.0.2.500-1.0.2.2100|CVE-2021-23839 / CVE-2021-23840 / CVE-2021-23841|https://aix.software.ibm.com/aix/efixes/security/openssl_advisory33.asc|https://aix.software.ibm.com/aix/efixes/security/openssl_fix33.tar|CVE-2021-23839:5.9 CVE-2021-23840:7.5 CVE-2021-23841:7.5|NO|04/15/2021|See Bulletin\r\n                        \r\n        JULIA DOWNLOAD         \r\nhttps://aix.software.ibm.com/aix/efixes/security/power9_fix.tar, https://aix.software.ibm.com/aix/efixes/security/gencore_fix.tar, https://aix.software.ibm.com/aix/efixes/security/openssl_fix33.tar, https://aix.software.ibm.com/aix/efixes/security/bind_fix18.tar\r\n                               \r\n      INSIDE PROTOCOL IF IN DOWNLOAD     \r\nhttps://aix.software.ibm.com/aix/efixes/security/power9_fix.tar, https://aix.software.ibm.com/aix/efixes/security/gencore_fix.tar, https://aix.software.ibm.com/aix/efixes/security/openssl_fix33.tar, https://aix.software.ibm.com/aix/efixes/security/bind_fix18.tar\r\n\r\n{"msg": "exit on download only", "invocation": {"module_args": {"force": false, "verbose": false, "save_report": true, "download_only": true, "extend_fs": true, "protocol": "https", "clean": false, "path": "/ansible_test", "csv": null, "check_only": false, "apar": "sec", "filesets": null}}, "meta": {"0.report": ["Fileset|Current Version|Type|EFix Installed|Abstract|Unsafe Versions|APARs|Bulletin URL|Download URL|CVSS Base Score|Reboot Required|Last Update|Fixed In", "bos.mp64|7.2.5.0|sec||NOT FIXED - IBM has released AIX iFixes in response to a vulnerability in IBM POWER9|7.2.5.0-7.2.5.1|IJ28226 / CVE-2020-4788|https://aix.software.ibm.com/aix/efixes/security/power9_advisory.asc|https://aix.software.ibm.com/aix/efixes/security/power9_fix.tar|CVE-2020-4788:5.1|YES|11/19/2020|7200-05-02", "bos.mp64|7.2.5.0|sec||NOT FIXED - IBM has released VIOS iFixes in response to a vulnerability in IBM POWER9|7.2.5.0-7.2.5.1|IJ28226 / CVE-2020-4788|https://aix.software.ibm.com/aix/efixes/security/power9_advisory.asc|https://aix.software.ibm.com/aix/efixes/security/power9_fix.tar|CVE-2020-4788:5.1|YES|11/19/2020|3.1.2.20", "bos.mp64|7.2.5.0|sec||NOT FIXED - Vulnerability in gencore affects AIX|7.2.5.0-7.2.5.1|IJ28828 / CVE-2020-4887|https://aix.software.ibm.com/aix/efixes/security/gencore_advisory.asc|https://aix.software.ibm.com/aix/efixes/security/gencore_fix.tar|CVE-2020-4887:6.2|YES|01/19/2021|7200-05-02", "bos.mp64|7.2.5.0|sec||NOT FIXED - Vulnerability in gencore affects AIX|7.2.5.0-7.2.5.1|IJ28828 / CVE-2020-4887|https://aix.software.ibm.com/aix/efixes/security/gencore_advisory.asc|https://aix.software.ibm.com/aix/efixes/security/gencore_fix.tar|CVE-2020-4887:6.2|YES|01/19/2021|3.1.2.20", "bos.net.tcp.bind_utils|7.2.5.0|sec||NOT FIXED - There are vulnerabilities in BIND that impact AIX.|7.2.5.0-7.2.5.1|IJ29232 / CVE-2020-8622|https://aix.software.ibm.com/aix/efixes/security/bind_advisory18.asc|https://aix.software.ibm.com/aix/efixes/security/bind_fix18.tar|CVE-2020-8622:6.5|NO|12/18/2020|7200-05-02", "bos.net.tcp.bind_utils|7.2.5.0|sec||NOT FIXED - There are vulnerabilities in BIND that impact VIOS.|7.2.5.0-7.2.5.1|IJ29232 / CVE-2020-8622|https://aix.software.ibm.com/aix/efixes/security/bind_advisory18.asc|https://aix.software.ibm.com/aix/efixes/security/bind_fix18.tar|CVE-2020-8622:6.5|NO|12/18/2020|3.1.2.20", "openssl.base|1.0.2.2100|sec||NOT FIXED - Vulnerabilities in OpenSSL affect AIX|1.0.2.500-1.0.2.2100|CVE-2021-23839 / CVE-2021-23840 / CVE-2021-23841|https://aix.software.ibm.com/aix/efixes/security/openssl_advisory33.asc|https://aix.software.ibm.com/aix/efixes/security/openssl_fix33.tar|CVE-2021-23839:5.9 CVE-2021-23840:7.5 CVE-2021-23841:7.5|NO|04/15/2021|See Bulletin"], "1.parse": ["https://aix.software.ibm.com/aix/efixes/security/power9_fix.tar", "https://aix.software.ibm.com/aix/efixes/security/gencore_fix.tar", "https://aix.software.ibm.com/aix/efixes/security/openssl_fix33.tar", "https://aix.software.ibm.com/aix/efixes/security/bind_fix18.tar"], "messages": ["installed efix 1022100a is locking /usr/lib/libcrypto.a preventing the installation of 1022100b.210323.epkg.Z, remove it manually or set the \\"force\\" option.", "installed efix 1022100a is locking /usr/lib/libssl.a preventing the installation of 1022100b.210323.epkg.Z, remove it manually or set the \\"force\\" option.", "installed efix 1022100a is locking /usr/bin/openssl preventing the installation of 1022100b.210323.epkg.Z, remove it manually or set the \\"force\\" option.", "installed efix 1022100a is locking /usr/bin/openssl64 preventing the installation of 1022100b.210323.epkg.Z, remove it manually or set the \\"force\\" option."], "4.1.reject": ["1022100b.210323.epkg.Z: installed efix 1022100a is locking /usr/bin/openssl", "1022100b.210323.epkg.Z: installed efix 1022100a is locking /usr/bin/openssl64", "1022100b.210323.epkg.Z: installed efix 1022100a is locking /usr/lib/libcrypto.a", "1022100b.210323.epkg.Z: installed efix 1022100a is locking /usr/lib/libssl.a", "IJ28226s1a.201117.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.5.1 =< 7.2.5.0 =< 7.2.5.1", "IJ28227s0a.200922.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.4.0 =< 7.2.5.0 =< 7.2.4.0", "IJ28227s1a.200922.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.4.2 =< 7.2.5.0 =< 7.2.4.2", "IJ28227s1a.201205.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.4.1 =< 7.2.5.0 =< 7.2.4.1", "IJ28227s2a.200922.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.4.6 =< 7.2.5.0 =< 7.2.4.6", "IJ28227s2b.200922.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.4.4 =< 7.2.5.0 =< 7.2.4.4", "IJ28227s2c.200922.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.4.3 =< 7.2.5.0 =< 7.2.4.3", "IJ28228s3a.200921.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.3.17 =< 7.2.5.0 =< 7.2.3.17", "IJ28228s4a.200921.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.3.18 =< 7.2.5.0 =< 7.2.3.18", "IJ28228s5a.200921.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.3.19 =< 7.2.5.0 =< 7.2.3.19", "IJ28229s4a.200921.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.33 =< 7.2.5.0 =< 7.1.5.33", "IJ28229s5a.200921.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.35 =< 7.2.5.0 =< 7.1.5.35", "IJ28229s5b.200922.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.34 =< 7.2.5.0 =< 7.1.5.34", "IJ28229s6a.200921.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.38 =< 7.2.5.0 =< 7.1.5.38", "IJ28229s6b.200922.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.37 =< 7.2.5.0 =< 7.1.5.37", "IJ28229s6c.200922.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.36 =< 7.2.5.0 =< 7.1.5.36", "IJ28229s7a.201117.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.40 =< 7.2.5.0 =< 7.1.5.40", "IJ28229s7b.201117.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.39 =< 7.2.5.0 =< 7.1.5.39", "IJ28825m5a.201221.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.35 =< 7.2.5.0 =< 7.1.5.35", "IJ28825m5b.201221.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.34 =< 7.2.5.0 =< 7.1.5.34", "IJ28825m6a.201221.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.38 =< 7.2.5.0 =< 7.1.5.38", "IJ28825m6b.201221.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.37 =< 7.2.5.0 =< 7.1.5.37", "IJ28825m6c.201221.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.36 =< 7.2.5.0 =< 7.1.5.36", "IJ28825m7a.201221.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.40 =< 7.2.5.0 =< 7.1.5.40", "IJ28825m7b.201221.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.39 =< 7.2.5.0 =< 7.1.5.39", "IJ28826m3a.201221.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.3.17 =< 7.2.5.0 =< 7.2.3.17", "IJ28826m4a.201221.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.3.18 =< 7.2.5.0 =< 7.2.3.18", "IJ28826m5a.201221.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.3.19 =< 7.2.5.0 =< 7.2.3.19", "IJ28827m0a.201222.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.4.0 =< 7.2.5.0 =< 7.2.4.0", "IJ28827m1a.201222.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.4.2 =< 7.2.5.0 =< 7.2.4.2", "IJ28827m1b.201222.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.4.1 =< 7.2.5.0 =< 7.2.4.1", "IJ28827m2a.201222.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.4.6 =< 7.2.5.0 =< 7.2.4.6", "IJ28827m2b.201222.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.4.4 =< 7.2.5.0 =< 7.2.4.4", "IJ28827m2c.201222.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.4.3 =< 7.2.5.0 =< 7.2.4.3", "IJ28827m3a.210306.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.4.7 =< 7.2.5.0 =< 7.2.4.7", "IJ28828m1a.201222.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.5.1 =< 7.2.5.0 =< 7.2.5.1", "IJ29229m5a.201117.epkg.Z: prerequisite bos.net.tcp.bind_utils levels do not satisfy condition string: 07.02.0003.0016 =< 7.2.5.0 =< 07.02.0003.0016", "IJ29230m7a.201117.epkg.Z: prerequisite bos.net.tcp.client levels do not satisfy condition string: 07.01.0005.0034 =< 7.2.5.0 =< 07.01.0005.0036", "IJ29231m2a.201117.epkg.Z: prerequisite bos.net.tcp.bind_utils levels do not satisfy condition string: 07.02.0004.0000 =< 7.2.5.0 =< 07.02.0004.0001", "IJ29231s3a.210314.epkg.Z: prerequisite bos.net.tcp.bind_utils levels do not satisfy condition string: 7.2.4.2 =< 7.2.5.0 =< 7.2.4.2", "fips2100b.210323.epkg.Z: prerequisite openssl.base levels do not satisfy condition string: 20.16.102.2100 =< 1.0.2.2100 =< 20.16.102.2100"], "2.discover": ["power9_fix/IJ28226s1a.201117.epkg.Z", "power9_fix/IJ28226s1b.201117.epkg.Z", "power9_fix/IJ28227s0a.200922.epkg.Z", "power9_fix/IJ28227s1a.200922.epkg.Z", "power9_fix/IJ28227s1a.201205.epkg.Z", "power9_fix/IJ28227s2a.200922.epkg.Z", "power9_fix/IJ28227s2b.200922.epkg.Z", "power9_fix/IJ28227s2c.200922.epkg.Z", "power9_fix/IJ28228s3a.200921.epkg.Z", "power9_fix/IJ28228s4a.200921.epkg.Z", "power9_fix/IJ28228s5a.200921.epkg.Z", "power9_fix/IJ28229s4a.200921.epkg.Z", "power9_fix/IJ28229s5a.200921.epkg.Z", "power9_fix/IJ28229s5b.200922.epkg.Z", "power9_fix/IJ28229s6a.200921.epkg.Z", "power9_fix/IJ28229s6b.200922.epkg.Z", "power9_fix/IJ28229s6c.200922.epkg.Z", "power9_fix/IJ28229s7a.201117.epkg.Z", "power9_fix/IJ28229s7b.201117.epkg.Z", "gencore_fix/IJ28825m5a.201221.epkg.Z", "gencore_fix/IJ28825m5b.201221.epkg.Z", "gencore_fix/IJ28825m6a.201221.epkg.Z", "gencore_fix/IJ28825m6b.201221.epkg.Z", "gencore_fix/IJ28825m6c.201221.epkg.Z", "gencore_fix/IJ28825m7a.201221.epkg.Z", "gencore_fix/IJ28825m7b.201221.epkg.Z", "gencore_fix/IJ28826m3a.201221.epkg.Z", "gencore_fix/IJ28826m4a.201221.epkg.Z", "gencore_fix/IJ28826m5a.201221.epkg.Z", "gencore_fix/IJ28827m0a.201222.epkg.Z", "gencore_fix/IJ28827m1a.201222.epkg.Z", "gencore_fix/IJ28827m1b.201222.epkg.Z", "gencore_fix/IJ28827m2a.201222.epkg.Z", "gencore_fix/IJ28827m2b.201222.epkg.Z", "gencore_fix/IJ28827m2c.201222.epkg.Z", "gencore_fix/IJ28827m3a.210306.epkg.Z", "gencore_fix/IJ28828m1a.201222.epkg.Z", "openssl_fix33/1022100b.210323.epkg.Z", "openssl_fix33/fips2100b.210323.epkg.Z", "bind_fix18/IJ29229m5a.201117.epkg.Z", "bind_fix18/IJ29230m7a.201117.epkg.Z", "bind_fix18/IJ29231m2a.201117.epkg.Z", "bind_fix18/IJ29231s3a.210314.epkg.Z", "bind_fix18/IJ29232s1a.201117.epkg.Z"], "3.download": ["/ansible_test/work/tardir/power9_fix/IJ28226s1a.201117.epkg.Z", "/ansible_test/work/tardir/power9_fix/IJ28226s1b.201117.epkg.Z", "/ansible_test/work/tardir/power9_fix/IJ28227s0a.200922.epkg.Z", "/ansible_test/work/tardir/power9_fix/IJ28227s1a.200922.epkg.Z", "/ansible_test/work/tardir/power9_fix/IJ28227s1a.201205.epkg.Z", "/ansible_test/work/tardir/power9_fix/IJ28227s2a.200922.epkg.Z", "/ansible_test/work/tardir/power9_fix/IJ28227s2b.200922.epkg.Z", "/ansible_test/work/tardir/power9_fix/IJ28227s2c.200922.epkg.Z", "/ansible_test/work/tardir/power9_fix/IJ28228s3a.200921.epkg.Z", "/ansible_test/work/tardir/power9_fix/IJ28228s4a.200921.epkg.Z", "/ansible_test/work/tardir/power9_fix/IJ28228s5a.200921.epkg.Z", "/ansible_test/work/tardir/power9_fix/IJ28229s4a.200921.epkg.Z", "/ansible_test/work/tardir/power9_fix/IJ28229s5a.200921.epkg.Z", "/ansible_test/work/tardir/power9_fix/IJ28229s5b.200922.epkg.Z", "/ansible_test/work/tardir/power9_fix/IJ28229s6a.200921.epkg.Z", "/ansible_test/work/tardir/power9_fix/IJ28229s6b.200922.epkg.Z", "/ansible_test/work/tardir/power9_fix/IJ28229s6c.200922.epkg.Z", "/ansible_test/work/tardir/power9_fix/IJ28229s7a.201117.epkg.Z", "/ansible_test/work/tardir/power9_fix/IJ28229s7b.201117.epkg.Z", "/ansible_test/work/tardir/gencore_fix/IJ28825m5a.201221.epkg.Z", "/ansible_test/work/tardir/gencore_fix/IJ28825m5b.201221.epkg.Z", "/ansible_test/work/tardir/gencore_fix/IJ28825m6a.201221.epkg.Z", "/ansible_test/work/tardir/gencore_fix/IJ28825m6b.201221.epkg.Z", "/ansible_test/work/tardir/gencore_fix/IJ28825m6c.201221.epkg.Z", "/ansible_test/work/tardir/gencore_fix/IJ28825m7a.201221.epkg.Z", "/ansible_test/work/tardir/gencore_fix/IJ28825m7b.201221.epkg.Z", "/ansible_test/work/tardir/gencore_fix/IJ28826m3a.201221.epkg.Z", "/ansible_test/work/tardir/gencore_fix/IJ28826m4a.201221.epkg.Z", "/ansible_test/work/tardir/gencore_fix/IJ28826m5a.201221.epkg.Z", "/ansible_test/work/tardir/gencore_fix/IJ28827m0a.201222.epkg.Z", "/ansible_test/work/tardir/gencore_fix/IJ28827m1a.201222.epkg.Z", "/ansible_test/work/tardir/gencore_fix/IJ28827m1b.201222.epkg.Z", "/ansible_test/work/tardir/gencore_fix/IJ28827m2a.201222.epkg.Z", "/ansible_test/work/tardir/gencore_fix/IJ28827m2b.201222.epkg.Z", "/ansible_test/work/tardir/gencore_fix/IJ28827m2c.201222.epkg.Z", "/ansible_test/work/tardir/gencore_fix/IJ28827m3a.210306.epkg.Z", "/ansible_test/work/tardir/gencore_fix/IJ28828m1a.201222.epkg.Z", "/ansible_test/work/tardir/openssl_fix33/1022100b.210323.epkg.Z", "/ansible_test/work/tardir/openssl_fix33/fips2100b.210323.epkg.Z", "/ansible_test/work/tardir/bind_fix18/IJ29229m5a.201117.epkg.Z", "/ansible_test/work/tardir/bind_fix18/IJ29230m7a.201117.epkg.Z", "/ansible_test/work/tardir/bind_fix18/IJ29231m2a.201117.epkg.Z", "/ansible_test/work/tardir/bind_fix18/IJ29231s3a.210314.epkg.Z", "/ansible_test/work/tardir/bind_fix18/IJ29232s1a.201117.epkg.Z"], "4.2.check": ["/ansible_test/work/tardir/power9_fix/IJ28226s1b.201117.epkg.Z", "/ansible_test/work/tardir/bind_fix18/IJ29232s1a.201117.epkg.Z"]}, "changed": false}\r\n', b'X11 forwarding request failed\r\nShared connection to hotfox.aus.stglabs.ibm.com closed.\r\n')
+<hotfox.aus.stglabs.ibm.com> ESTABLISH SSH CONNECTION FOR USER: root
+<hotfox.aus.stglabs.ibm.com> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="root"' -o ConnectTimeout=10 -o ControlPath=/home/jrebello/.ansible/cp/e2023233fd hotfox.aus.stglabs.ibm.com '/bin/sh -c '"'"'rm -f -r /.ansible/tmp/ansible-tmp-1623875382.994737-842524-176802214372740/ > /dev/null 2>&1 && sleep 0'"'"''
+<hotfox.aus.stglabs.ibm.com> (0, b'', b'X11 forwarding request failed\r\n')
+ok: [pedro1] => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "invocation": {
+        "module_args": {
+            "apar": "sec",
+            "check_only": false,
+            "clean": false,
+            "csv": null,
+            "download_only": true,
+            "extend_fs": true,
+            "filesets": null,
+            "force": false,
+            "path": "/ansible_test",
+            "protocol": "https",
+            "save_report": true,
+            "verbose": false
+        }
+    },
+    "meta": {
+        "0.report": [
+            "Fileset|Current Version|Type|EFix Installed|Abstract|Unsafe Versions|APARs|Bulletin URL|Download URL|CVSS Base Score|Reboot Required|Last Update|Fixed In",
+            "bos.mp64|7.2.5.0|sec||NOT FIXED - IBM has released AIX iFixes in response to a vulnerability in IBM POWER9|7.2.5.0-7.2.5.1|IJ28226 / CVE-2020-4788|https://aix.software.ibm.com/aix/efixes/security/power9_advisory.asc|https://aix.software.ibm.com/aix/efixes/security/power9_fix.tar|CVE-2020-4788:5.1|YES|11/19/2020|7200-05-02",
+            "bos.mp64|7.2.5.0|sec||NOT FIXED - IBM has released VIOS iFixes in response to a vulnerability in IBM POWER9|7.2.5.0-7.2.5.1|IJ28226 / CVE-2020-4788|https://aix.software.ibm.com/aix/efixes/security/power9_advisory.asc|https://aix.software.ibm.com/aix/efixes/security/power9_fix.tar|CVE-2020-4788:5.1|YES|11/19/2020|3.1.2.20",
+            "bos.mp64|7.2.5.0|sec||NOT FIXED - Vulnerability in gencore affects AIX|7.2.5.0-7.2.5.1|IJ28828 / CVE-2020-4887|https://aix.software.ibm.com/aix/efixes/security/gencore_advisory.asc|https://aix.software.ibm.com/aix/efixes/security/gencore_fix.tar|CVE-2020-4887:6.2|YES|01/19/2021|7200-05-02",
+            "bos.mp64|7.2.5.0|sec||NOT FIXED - Vulnerability in gencore affects AIX|7.2.5.0-7.2.5.1|IJ28828 / CVE-2020-4887|https://aix.software.ibm.com/aix/efixes/security/gencore_advisory.asc|https://aix.software.ibm.com/aix/efixes/security/gencore_fix.tar|CVE-2020-4887:6.2|YES|01/19/2021|3.1.2.20",
+            "bos.net.tcp.bind_utils|7.2.5.0|sec||NOT FIXED - There are vulnerabilities in BIND that impact AIX.|7.2.5.0-7.2.5.1|IJ29232 / CVE-2020-8622|https://aix.software.ibm.com/aix/efixes/security/bind_advisory18.asc|https://aix.software.ibm.com/aix/efixes/security/bind_fix18.tar|CVE-2020-8622:6.5|NO|12/18/2020|7200-05-02",
+            "bos.net.tcp.bind_utils|7.2.5.0|sec||NOT FIXED - There are vulnerabilities in BIND that impact VIOS.|7.2.5.0-7.2.5.1|IJ29232 / CVE-2020-8622|https://aix.software.ibm.com/aix/efixes/security/bind_advisory18.asc|https://aix.software.ibm.com/aix/efixes/security/bind_fix18.tar|CVE-2020-8622:6.5|NO|12/18/2020|3.1.2.20",
+            "openssl.base|1.0.2.2100|sec||NOT FIXED - Vulnerabilities in OpenSSL affect AIX|1.0.2.500-1.0.2.2100|CVE-2021-23839 / CVE-2021-23840 / CVE-2021-23841|https://aix.software.ibm.com/aix/efixes/security/openssl_advisory33.asc|https://aix.software.ibm.com/aix/efixes/security/openssl_fix33.tar|CVE-2021-23839:5.9 CVE-2021-23840:7.5 CVE-2021-23841:7.5|NO|04/15/2021|See Bulletin"
+        ],
+        "1.parse": [
+            "https://aix.software.ibm.com/aix/efixes/security/power9_fix.tar",
+            "https://aix.software.ibm.com/aix/efixes/security/gencore_fix.tar",
+            "https://aix.software.ibm.com/aix/efixes/security/openssl_fix33.tar",
+            "https://aix.software.ibm.com/aix/efixes/security/bind_fix18.tar"
+        ],
+        "2.discover": [
+            "power9_fix/IJ28226s1a.201117.epkg.Z",
+            "power9_fix/IJ28226s1b.201117.epkg.Z",
+            "power9_fix/IJ28227s0a.200922.epkg.Z",
+            "power9_fix/IJ28227s1a.200922.epkg.Z",
+            "power9_fix/IJ28227s1a.201205.epkg.Z",
+            "power9_fix/IJ28227s2a.200922.epkg.Z",
+            "power9_fix/IJ28227s2b.200922.epkg.Z",
+            "power9_fix/IJ28227s2c.200922.epkg.Z",
+            "power9_fix/IJ28228s3a.200921.epkg.Z",
+            "power9_fix/IJ28228s4a.200921.epkg.Z",
+            "power9_fix/IJ28228s5a.200921.epkg.Z",
+            "power9_fix/IJ28229s4a.200921.epkg.Z",
+            "power9_fix/IJ28229s5a.200921.epkg.Z",
+            "power9_fix/IJ28229s5b.200922.epkg.Z",
+            "power9_fix/IJ28229s6a.200921.epkg.Z",
+            "power9_fix/IJ28229s6b.200922.epkg.Z",
+            "power9_fix/IJ28229s6c.200922.epkg.Z",
+            "power9_fix/IJ28229s7a.201117.epkg.Z",
+            "power9_fix/IJ28229s7b.201117.epkg.Z",
+            "gencore_fix/IJ28825m5a.201221.epkg.Z",
+            "gencore_fix/IJ28825m5b.201221.epkg.Z",
+            "gencore_fix/IJ28825m6a.201221.epkg.Z",
+            "gencore_fix/IJ28825m6b.201221.epkg.Z",
+            "gencore_fix/IJ28825m6c.201221.epkg.Z",
+            "gencore_fix/IJ28825m7a.201221.epkg.Z",
+            "gencore_fix/IJ28825m7b.201221.epkg.Z",
+            "gencore_fix/IJ28826m3a.201221.epkg.Z",
+            "gencore_fix/IJ28826m4a.201221.epkg.Z",
+            "gencore_fix/IJ28826m5a.201221.epkg.Z",
+            "gencore_fix/IJ28827m0a.201222.epkg.Z",
+            "gencore_fix/IJ28827m1a.201222.epkg.Z",
+            "gencore_fix/IJ28827m1b.201222.epkg.Z",
+            "gencore_fix/IJ28827m2a.201222.epkg.Z",
+            "gencore_fix/IJ28827m2b.201222.epkg.Z",
+            "gencore_fix/IJ28827m2c.201222.epkg.Z",
+            "gencore_fix/IJ28827m3a.210306.epkg.Z",
+            "gencore_fix/IJ28828m1a.201222.epkg.Z",
+            "openssl_fix33/1022100b.210323.epkg.Z",
+            "openssl_fix33/fips2100b.210323.epkg.Z",
+            "bind_fix18/IJ29229m5a.201117.epkg.Z",
+            "bind_fix18/IJ29230m7a.201117.epkg.Z",
+            "bind_fix18/IJ29231m2a.201117.epkg.Z",
+            "bind_fix18/IJ29231s3a.210314.epkg.Z",
+            "bind_fix18/IJ29232s1a.201117.epkg.Z"
+        ],
+        "3.download": [
+            "/ansible_test/work/tardir/power9_fix/IJ28226s1a.201117.epkg.Z",
+            "/ansible_test/work/tardir/power9_fix/IJ28226s1b.201117.epkg.Z",
+            "/ansible_test/work/tardir/power9_fix/IJ28227s0a.200922.epkg.Z",
+            "/ansible_test/work/tardir/power9_fix/IJ28227s1a.200922.epkg.Z",
+            "/ansible_test/work/tardir/power9_fix/IJ28227s1a.201205.epkg.Z",
+            "/ansible_test/work/tardir/power9_fix/IJ28227s2a.200922.epkg.Z",
+            "/ansible_test/work/tardir/power9_fix/IJ28227s2b.200922.epkg.Z",
+            "/ansible_test/work/tardir/power9_fix/IJ28227s2c.200922.epkg.Z",
+            "/ansible_test/work/tardir/power9_fix/IJ28228s3a.200921.epkg.Z",
+            "/ansible_test/work/tardir/power9_fix/IJ28228s4a.200921.epkg.Z",
+            "/ansible_test/work/tardir/power9_fix/IJ28228s5a.200921.epkg.Z",
+            "/ansible_test/work/tardir/power9_fix/IJ28229s4a.200921.epkg.Z",
+            "/ansible_test/work/tardir/power9_fix/IJ28229s5a.200921.epkg.Z",
+            "/ansible_test/work/tardir/power9_fix/IJ28229s5b.200922.epkg.Z",
+            "/ansible_test/work/tardir/power9_fix/IJ28229s6a.200921.epkg.Z",
+            "/ansible_test/work/tardir/power9_fix/IJ28229s6b.200922.epkg.Z",
+            "/ansible_test/work/tardir/power9_fix/IJ28229s6c.200922.epkg.Z",
+            "/ansible_test/work/tardir/power9_fix/IJ28229s7a.201117.epkg.Z",
+            "/ansible_test/work/tardir/power9_fix/IJ28229s7b.201117.epkg.Z",
+            "/ansible_test/work/tardir/gencore_fix/IJ28825m5a.201221.epkg.Z",
+            "/ansible_test/work/tardir/gencore_fix/IJ28825m5b.201221.epkg.Z",
+            "/ansible_test/work/tardir/gencore_fix/IJ28825m6a.201221.epkg.Z",
+            "/ansible_test/work/tardir/gencore_fix/IJ28825m6b.201221.epkg.Z",
+            "/ansible_test/work/tardir/gencore_fix/IJ28825m6c.201221.epkg.Z",
+            "/ansible_test/work/tardir/gencore_fix/IJ28825m7a.201221.epkg.Z",
+            "/ansible_test/work/tardir/gencore_fix/IJ28825m7b.201221.epkg.Z",
+            "/ansible_test/work/tardir/gencore_fix/IJ28826m3a.201221.epkg.Z",
+            "/ansible_test/work/tardir/gencore_fix/IJ28826m4a.201221.epkg.Z",
+            "/ansible_test/work/tardir/gencore_fix/IJ28826m5a.201221.epkg.Z",
+            "/ansible_test/work/tardir/gencore_fix/IJ28827m0a.201222.epkg.Z",
+            "/ansible_test/work/tardir/gencore_fix/IJ28827m1a.201222.epkg.Z",
+            "/ansible_test/work/tardir/gencore_fix/IJ28827m1b.201222.epkg.Z",
+            "/ansible_test/work/tardir/gencore_fix/IJ28827m2a.201222.epkg.Z",
+            "/ansible_test/work/tardir/gencore_fix/IJ28827m2b.201222.epkg.Z",
+            "/ansible_test/work/tardir/gencore_fix/IJ28827m2c.201222.epkg.Z",
+            "/ansible_test/work/tardir/gencore_fix/IJ28827m3a.210306.epkg.Z",
+            "/ansible_test/work/tardir/gencore_fix/IJ28828m1a.201222.epkg.Z",
+            "/ansible_test/work/tardir/openssl_fix33/1022100b.210323.epkg.Z",
+            "/ansible_test/work/tardir/openssl_fix33/fips2100b.210323.epkg.Z",
+            "/ansible_test/work/tardir/bind_fix18/IJ29229m5a.201117.epkg.Z",
+            "/ansible_test/work/tardir/bind_fix18/IJ29230m7a.201117.epkg.Z",
+            "/ansible_test/work/tardir/bind_fix18/IJ29231m2a.201117.epkg.Z",
+            "/ansible_test/work/tardir/bind_fix18/IJ29231s3a.210314.epkg.Z",
+            "/ansible_test/work/tardir/bind_fix18/IJ29232s1a.201117.epkg.Z"
+        ],
+        "4.1.reject": [
+            "1022100b.210323.epkg.Z: installed efix 1022100a is locking /usr/bin/openssl",
+            "1022100b.210323.epkg.Z: installed efix 1022100a is locking /usr/bin/openssl64",
+            "1022100b.210323.epkg.Z: installed efix 1022100a is locking /usr/lib/libcrypto.a",
+            "1022100b.210323.epkg.Z: installed efix 1022100a is locking /usr/lib/libssl.a",
+            "IJ28226s1a.201117.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.5.1 =< 7.2.5.0 =< 7.2.5.1",
+            "IJ28227s0a.200922.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.4.0 =< 7.2.5.0 =< 7.2.4.0",
+            "IJ28227s1a.200922.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.4.2 =< 7.2.5.0 =< 7.2.4.2",
+            "IJ28227s1a.201205.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.4.1 =< 7.2.5.0 =< 7.2.4.1",
+            "IJ28227s2a.200922.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.4.6 =< 7.2.5.0 =< 7.2.4.6",
+            "IJ28227s2b.200922.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.4.4 =< 7.2.5.0 =< 7.2.4.4",
+            "IJ28227s2c.200922.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.4.3 =< 7.2.5.0 =< 7.2.4.3",
+            "IJ28228s3a.200921.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.3.17 =< 7.2.5.0 =< 7.2.3.17",
+            "IJ28228s4a.200921.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.3.18 =< 7.2.5.0 =< 7.2.3.18",
+            "IJ28228s5a.200921.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.3.19 =< 7.2.5.0 =< 7.2.3.19",
+            "IJ28229s4a.200921.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.33 =< 7.2.5.0 =< 7.1.5.33",
+            "IJ28229s5a.200921.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.35 =< 7.2.5.0 =< 7.1.5.35",
+            "IJ28229s5b.200922.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.34 =< 7.2.5.0 =< 7.1.5.34",
+            "IJ28229s6a.200921.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.38 =< 7.2.5.0 =< 7.1.5.38",
+            "IJ28229s6b.200922.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.37 =< 7.2.5.0 =< 7.1.5.37",
+            "IJ28229s6c.200922.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.36 =< 7.2.5.0 =< 7.1.5.36",
+            "IJ28229s7a.201117.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.40 =< 7.2.5.0 =< 7.1.5.40",
+            "IJ28229s7b.201117.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.39 =< 7.2.5.0 =< 7.1.5.39",
+            "IJ28825m5a.201221.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.35 =< 7.2.5.0 =< 7.1.5.35",
+            "IJ28825m5b.201221.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.34 =< 7.2.5.0 =< 7.1.5.34",
+            "IJ28825m6a.201221.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.38 =< 7.2.5.0 =< 7.1.5.38",
+            "IJ28825m6b.201221.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.37 =< 7.2.5.0 =< 7.1.5.37",
+            "IJ28825m6c.201221.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.36 =< 7.2.5.0 =< 7.1.5.36",
+            "IJ28825m7a.201221.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.40 =< 7.2.5.0 =< 7.1.5.40",
+            "IJ28825m7b.201221.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.39 =< 7.2.5.0 =< 7.1.5.39",
+            "IJ28826m3a.201221.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.3.17 =< 7.2.5.0 =< 7.2.3.17",
+            "IJ28826m4a.201221.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.3.18 =< 7.2.5.0 =< 7.2.3.18",
+            "IJ28826m5a.201221.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.3.19 =< 7.2.5.0 =< 7.2.3.19",
+            "IJ28827m0a.201222.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.4.0 =< 7.2.5.0 =< 7.2.4.0",
+            "IJ28827m1a.201222.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.4.2 =< 7.2.5.0 =< 7.2.4.2",
+            "IJ28827m1b.201222.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.4.1 =< 7.2.5.0 =< 7.2.4.1",
+            "IJ28827m2a.201222.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.4.6 =< 7.2.5.0 =< 7.2.4.6",
+            "IJ28827m2b.201222.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.4.4 =< 7.2.5.0 =< 7.2.4.4",
+            "IJ28827m2c.201222.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.4.3 =< 7.2.5.0 =< 7.2.4.3",
+            "IJ28827m3a.210306.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.4.7 =< 7.2.5.0 =< 7.2.4.7",
+            "IJ28828m1a.201222.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.5.1 =< 7.2.5.0 =< 7.2.5.1",
+            "IJ29229m5a.201117.epkg.Z: prerequisite bos.net.tcp.bind_utils levels do not satisfy condition string: 07.02.0003.0016 =< 7.2.5.0 =< 07.02.0003.0016",
+            "IJ29230m7a.201117.epkg.Z: prerequisite bos.net.tcp.client levels do not satisfy condition string: 07.01.0005.0034 =< 7.2.5.0 =< 07.01.0005.0036",
+            "IJ29231m2a.201117.epkg.Z: prerequisite bos.net.tcp.bind_utils levels do not satisfy condition string: 07.02.0004.0000 =< 7.2.5.0 =< 07.02.0004.0001",
+            "IJ29231s3a.210314.epkg.Z: prerequisite bos.net.tcp.bind_utils levels do not satisfy condition string: 7.2.4.2 =< 7.2.5.0 =< 7.2.4.2",
+            "fips2100b.210323.epkg.Z: prerequisite openssl.base levels do not satisfy condition string: 20.16.102.2100 =< 1.0.2.2100 =< 20.16.102.2100"
+        ],
+        "4.2.check": [
+            "/ansible_test/work/tardir/power9_fix/IJ28226s1b.201117.epkg.Z",
+            "/ansible_test/work/tardir/bind_fix18/IJ29232s1a.201117.epkg.Z"
+        ],
+        "messages": [
+            "installed efix 1022100a is locking /usr/lib/libcrypto.a preventing the installation of 1022100b.210323.epkg.Z, remove it manually or set the \"force\" option.",
+            "installed efix 1022100a is locking /usr/lib/libssl.a preventing the installation of 1022100b.210323.epkg.Z, remove it manually or set the \"force\" option.",
+            "installed efix 1022100a is locking /usr/bin/openssl preventing the installation of 1022100b.210323.epkg.Z, remove it manually or set the \"force\" option.",
+            "installed efix 1022100a is locking /usr/bin/openssl64 preventing the installation of 1022100b.210323.epkg.Z, remove it manually or set the \"force\" option."
+        ]
+    },
+    "msg": "exit on download only"
+}
+
+TASK [debug] ************************************************************************************************************************
+task path: /home/jrebello/ansible_collections/ibm/power_aix/my_test_playbooks/demo2_flrtvc.yml:15
+ok: [pedro1] => {
+    "result": {
+        "ansible_facts": {
+            "discovered_interpreter_python": "/usr/bin/python"
+        },
+        "changed": false,
+        "failed": false,
+        "meta": {
+            "0.report": [
+                "Fileset|Current Version|Type|EFix Installed|Abstract|Unsafe Versions|APARs|Bulletin URL|Download URL|CVSS Base Score|Reboot Required|Last Update|Fixed In",
+                "bos.mp64|7.2.5.0|sec||NOT FIXED - IBM has released AIX iFixes in response to a vulnerability in IBM POWER9|7.2.5.0-7.2.5.1|IJ28226 / CVE-2020-4788|https://aix.software.ibm.com/aix/efixes/security/power9_advisory.asc|https://aix.software.ibm.com/aix/efixes/security/power9_fix.tar|CVE-2020-4788:5.1|YES|11/19/2020|7200-05-02",
+                "bos.mp64|7.2.5.0|sec||NOT FIXED - IBM has released VIOS iFixes in response to a vulnerability in IBM POWER9|7.2.5.0-7.2.5.1|IJ28226 / CVE-2020-4788|https://aix.software.ibm.com/aix/efixes/security/power9_advisory.asc|https://aix.software.ibm.com/aix/efixes/security/power9_fix.tar|CVE-2020-4788:5.1|YES|11/19/2020|3.1.2.20",
+                "bos.mp64|7.2.5.0|sec||NOT FIXED - Vulnerability in gencore affects AIX|7.2.5.0-7.2.5.1|IJ28828 / CVE-2020-4887|https://aix.software.ibm.com/aix/efixes/security/gencore_advisory.asc|https://aix.software.ibm.com/aix/efixes/security/gencore_fix.tar|CVE-2020-4887:6.2|YES|01/19/2021|7200-05-02",
+                "bos.mp64|7.2.5.0|sec||NOT FIXED - Vulnerability in gencore affects AIX|7.2.5.0-7.2.5.1|IJ28828 / CVE-2020-4887|https://aix.software.ibm.com/aix/efixes/security/gencore_advisory.asc|https://aix.software.ibm.com/aix/efixes/security/gencore_fix.tar|CVE-2020-4887:6.2|YES|01/19/2021|3.1.2.20",
+                "bos.net.tcp.bind_utils|7.2.5.0|sec||NOT FIXED - There are vulnerabilities in BIND that impact AIX.|7.2.5.0-7.2.5.1|IJ29232 / CVE-2020-8622|https://aix.software.ibm.com/aix/efixes/security/bind_advisory18.asc|https://aix.software.ibm.com/aix/efixes/security/bind_fix18.tar|CVE-2020-8622:6.5|NO|12/18/2020|7200-05-02",
+                "bos.net.tcp.bind_utils|7.2.5.0|sec||NOT FIXED - There are vulnerabilities in BIND that impact VIOS.|7.2.5.0-7.2.5.1|IJ29232 / CVE-2020-8622|https://aix.software.ibm.com/aix/efixes/security/bind_advisory18.asc|https://aix.software.ibm.com/aix/efixes/security/bind_fix18.tar|CVE-2020-8622:6.5|NO|12/18/2020|3.1.2.20",
+                "openssl.base|1.0.2.2100|sec||NOT FIXED - Vulnerabilities in OpenSSL affect AIX|1.0.2.500-1.0.2.2100|CVE-2021-23839 / CVE-2021-23840 / CVE-2021-23841|https://aix.software.ibm.com/aix/efixes/security/openssl_advisory33.asc|https://aix.software.ibm.com/aix/efixes/security/openssl_fix33.tar|CVE-2021-23839:5.9 CVE-2021-23840:7.5 CVE-2021-23841:7.5|NO|04/15/2021|See Bulletin"
+            ],
+            "1.parse": [
+                "https://aix.software.ibm.com/aix/efixes/security/power9_fix.tar",
+                "https://aix.software.ibm.com/aix/efixes/security/gencore_fix.tar",
+                "https://aix.software.ibm.com/aix/efixes/security/openssl_fix33.tar",
+                "https://aix.software.ibm.com/aix/efixes/security/bind_fix18.tar"
+            ],
+            "2.discover": [
+                "power9_fix/IJ28226s1a.201117.epkg.Z",
+                "power9_fix/IJ28226s1b.201117.epkg.Z",
+                "power9_fix/IJ28227s0a.200922.epkg.Z",
+                "power9_fix/IJ28227s1a.200922.epkg.Z",
+                "power9_fix/IJ28227s1a.201205.epkg.Z",
+                "power9_fix/IJ28227s2a.200922.epkg.Z",
+                "power9_fix/IJ28227s2b.200922.epkg.Z",
+                "power9_fix/IJ28227s2c.200922.epkg.Z",
+                "power9_fix/IJ28228s3a.200921.epkg.Z",
+                "power9_fix/IJ28228s4a.200921.epkg.Z",
+                "power9_fix/IJ28228s5a.200921.epkg.Z",
+                "power9_fix/IJ28229s4a.200921.epkg.Z",
+                "power9_fix/IJ28229s5a.200921.epkg.Z",
+                "power9_fix/IJ28229s5b.200922.epkg.Z",
+                "power9_fix/IJ28229s6a.200921.epkg.Z",
+                "power9_fix/IJ28229s6b.200922.epkg.Z",
+                "power9_fix/IJ28229s6c.200922.epkg.Z",
+                "power9_fix/IJ28229s7a.201117.epkg.Z",
+                "power9_fix/IJ28229s7b.201117.epkg.Z",
+                "gencore_fix/IJ28825m5a.201221.epkg.Z",
+                "gencore_fix/IJ28825m5b.201221.epkg.Z",
+                "gencore_fix/IJ28825m6a.201221.epkg.Z",
+                "gencore_fix/IJ28825m6b.201221.epkg.Z",
+                "gencore_fix/IJ28825m6c.201221.epkg.Z",
+                "gencore_fix/IJ28825m7a.201221.epkg.Z",
+                "gencore_fix/IJ28825m7b.201221.epkg.Z",
+                "gencore_fix/IJ28826m3a.201221.epkg.Z",
+                "gencore_fix/IJ28826m4a.201221.epkg.Z",
+                "gencore_fix/IJ28826m5a.201221.epkg.Z",
+                "gencore_fix/IJ28827m0a.201222.epkg.Z",
+                "gencore_fix/IJ28827m1a.201222.epkg.Z",
+                "gencore_fix/IJ28827m1b.201222.epkg.Z",
+                "gencore_fix/IJ28827m2a.201222.epkg.Z",
+                "gencore_fix/IJ28827m2b.201222.epkg.Z",
+                "gencore_fix/IJ28827m2c.201222.epkg.Z",
+                "gencore_fix/IJ28827m3a.210306.epkg.Z",
+                "gencore_fix/IJ28828m1a.201222.epkg.Z",
+                "openssl_fix33/1022100b.210323.epkg.Z",
+                "openssl_fix33/fips2100b.210323.epkg.Z",
+                "bind_fix18/IJ29229m5a.201117.epkg.Z",
+                "bind_fix18/IJ29230m7a.201117.epkg.Z",
+                "bind_fix18/IJ29231m2a.201117.epkg.Z",
+                "bind_fix18/IJ29231s3a.210314.epkg.Z",
+                "bind_fix18/IJ29232s1a.201117.epkg.Z"
+            ],
+            "3.download": [
+                "/ansible_test/work/tardir/power9_fix/IJ28226s1a.201117.epkg.Z",
+                "/ansible_test/work/tardir/power9_fix/IJ28226s1b.201117.epkg.Z",
+                "/ansible_test/work/tardir/power9_fix/IJ28227s0a.200922.epkg.Z",
+                "/ansible_test/work/tardir/power9_fix/IJ28227s1a.200922.epkg.Z",
+                "/ansible_test/work/tardir/power9_fix/IJ28227s1a.201205.epkg.Z",
+                "/ansible_test/work/tardir/power9_fix/IJ28227s2a.200922.epkg.Z",
+                "/ansible_test/work/tardir/power9_fix/IJ28227s2b.200922.epkg.Z",
+                "/ansible_test/work/tardir/power9_fix/IJ28227s2c.200922.epkg.Z",
+                "/ansible_test/work/tardir/power9_fix/IJ28228s3a.200921.epkg.Z",
+                "/ansible_test/work/tardir/power9_fix/IJ28228s4a.200921.epkg.Z",
+                "/ansible_test/work/tardir/power9_fix/IJ28228s5a.200921.epkg.Z",
+                "/ansible_test/work/tardir/power9_fix/IJ28229s4a.200921.epkg.Z",
+                "/ansible_test/work/tardir/power9_fix/IJ28229s5a.200921.epkg.Z",
+                "/ansible_test/work/tardir/power9_fix/IJ28229s5b.200922.epkg.Z",
+                "/ansible_test/work/tardir/power9_fix/IJ28229s6a.200921.epkg.Z",
+                "/ansible_test/work/tardir/power9_fix/IJ28229s6b.200922.epkg.Z",
+                "/ansible_test/work/tardir/power9_fix/IJ28229s6c.200922.epkg.Z",
+                "/ansible_test/work/tardir/power9_fix/IJ28229s7a.201117.epkg.Z",
+                "/ansible_test/work/tardir/power9_fix/IJ28229s7b.201117.epkg.Z",
+                "/ansible_test/work/tardir/gencore_fix/IJ28825m5a.201221.epkg.Z",
+                "/ansible_test/work/tardir/gencore_fix/IJ28825m5b.201221.epkg.Z",
+                "/ansible_test/work/tardir/gencore_fix/IJ28825m6a.201221.epkg.Z",
+                "/ansible_test/work/tardir/gencore_fix/IJ28825m6b.201221.epkg.Z",
+                "/ansible_test/work/tardir/gencore_fix/IJ28825m6c.201221.epkg.Z",
+                "/ansible_test/work/tardir/gencore_fix/IJ28825m7a.201221.epkg.Z",
+                "/ansible_test/work/tardir/gencore_fix/IJ28825m7b.201221.epkg.Z",
+                "/ansible_test/work/tardir/gencore_fix/IJ28826m3a.201221.epkg.Z",
+                "/ansible_test/work/tardir/gencore_fix/IJ28826m4a.201221.epkg.Z",
+                "/ansible_test/work/tardir/gencore_fix/IJ28826m5a.201221.epkg.Z",
+                "/ansible_test/work/tardir/gencore_fix/IJ28827m0a.201222.epkg.Z",
+                "/ansible_test/work/tardir/gencore_fix/IJ28827m1a.201222.epkg.Z",
+                "/ansible_test/work/tardir/gencore_fix/IJ28827m1b.201222.epkg.Z",
+                "/ansible_test/work/tardir/gencore_fix/IJ28827m2a.201222.epkg.Z",
+                "/ansible_test/work/tardir/gencore_fix/IJ28827m2b.201222.epkg.Z",
+                "/ansible_test/work/tardir/gencore_fix/IJ28827m2c.201222.epkg.Z",
+                "/ansible_test/work/tardir/gencore_fix/IJ28827m3a.210306.epkg.Z",
+                "/ansible_test/work/tardir/gencore_fix/IJ28828m1a.201222.epkg.Z",
+                "/ansible_test/work/tardir/openssl_fix33/1022100b.210323.epkg.Z",
+                "/ansible_test/work/tardir/openssl_fix33/fips2100b.210323.epkg.Z",
+                "/ansible_test/work/tardir/bind_fix18/IJ29229m5a.201117.epkg.Z",
+                "/ansible_test/work/tardir/bind_fix18/IJ29230m7a.201117.epkg.Z",
+                "/ansible_test/work/tardir/bind_fix18/IJ29231m2a.201117.epkg.Z",
+                "/ansible_test/work/tardir/bind_fix18/IJ29231s3a.210314.epkg.Z",
+                "/ansible_test/work/tardir/bind_fix18/IJ29232s1a.201117.epkg.Z"
+            ],
+            "4.1.reject": [
+                "1022100b.210323.epkg.Z: installed efix 1022100a is locking /usr/bin/openssl",
+                "1022100b.210323.epkg.Z: installed efix 1022100a is locking /usr/bin/openssl64",
+                "1022100b.210323.epkg.Z: installed efix 1022100a is locking /usr/lib/libcrypto.a",
+                "1022100b.210323.epkg.Z: installed efix 1022100a is locking /usr/lib/libssl.a",
+                "IJ28226s1a.201117.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.5.1 =< 7.2.5.0 =< 7.2.5.1",
+                "IJ28227s0a.200922.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.4.0 =< 7.2.5.0 =< 7.2.4.0",
+                "IJ28227s1a.200922.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.4.2 =< 7.2.5.0 =< 7.2.4.2",
+                "IJ28227s1a.201205.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.4.1 =< 7.2.5.0 =< 7.2.4.1",
+                "IJ28227s2a.200922.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.4.6 =< 7.2.5.0 =< 7.2.4.6",
+                "IJ28227s2b.200922.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.4.4 =< 7.2.5.0 =< 7.2.4.4",
+                "IJ28227s2c.200922.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.4.3 =< 7.2.5.0 =< 7.2.4.3",
+                "IJ28228s3a.200921.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.3.17 =< 7.2.5.0 =< 7.2.3.17",
+                "IJ28228s4a.200921.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.3.18 =< 7.2.5.0 =< 7.2.3.18",
+                "IJ28228s5a.200921.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.3.19 =< 7.2.5.0 =< 7.2.3.19",
+                "IJ28229s4a.200921.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.33 =< 7.2.5.0 =< 7.1.5.33",
+                "IJ28229s5a.200921.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.35 =< 7.2.5.0 =< 7.1.5.35",
+                "IJ28229s5b.200922.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.34 =< 7.2.5.0 =< 7.1.5.34",
+                "IJ28229s6a.200921.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.38 =< 7.2.5.0 =< 7.1.5.38",
+                "IJ28229s6b.200922.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.37 =< 7.2.5.0 =< 7.1.5.37",
+                "IJ28229s6c.200922.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.36 =< 7.2.5.0 =< 7.1.5.36",
+                "IJ28229s7a.201117.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.40 =< 7.2.5.0 =< 7.1.5.40",
+                "IJ28229s7b.201117.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.39 =< 7.2.5.0 =< 7.1.5.39",
+                "IJ28825m5a.201221.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.35 =< 7.2.5.0 =< 7.1.5.35",
+                "IJ28825m5b.201221.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.34 =< 7.2.5.0 =< 7.1.5.34",
+                "IJ28825m6a.201221.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.38 =< 7.2.5.0 =< 7.1.5.38",
+                "IJ28825m6b.201221.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.37 =< 7.2.5.0 =< 7.1.5.37",
+                "IJ28825m6c.201221.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.36 =< 7.2.5.0 =< 7.1.5.36",
+                "IJ28825m7a.201221.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.40 =< 7.2.5.0 =< 7.1.5.40",
+                "IJ28825m7b.201221.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.1.5.39 =< 7.2.5.0 =< 7.1.5.39",
+                "IJ28826m3a.201221.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.3.17 =< 7.2.5.0 =< 7.2.3.17",
+                "IJ28826m4a.201221.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.3.18 =< 7.2.5.0 =< 7.2.3.18",
+                "IJ28826m5a.201221.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.3.19 =< 7.2.5.0 =< 7.2.3.19",
+                "IJ28827m0a.201222.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.4.0 =< 7.2.5.0 =< 7.2.4.0",
+                "IJ28827m1a.201222.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.4.2 =< 7.2.5.0 =< 7.2.4.2",
+                "IJ28827m1b.201222.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.4.1 =< 7.2.5.0 =< 7.2.4.1",
+                "IJ28827m2a.201222.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.4.6 =< 7.2.5.0 =< 7.2.4.6",
+                "IJ28827m2b.201222.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.4.4 =< 7.2.5.0 =< 7.2.4.4",
+                "IJ28827m2c.201222.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.4.3 =< 7.2.5.0 =< 7.2.4.3",
+                "IJ28827m3a.210306.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.4.7 =< 7.2.5.0 =< 7.2.4.7",
+                "IJ28828m1a.201222.epkg.Z: prerequisite bos.mp64 levels do not satisfy condition string: 7.2.5.1 =< 7.2.5.0 =< 7.2.5.1",
+                "IJ29229m5a.201117.epkg.Z: prerequisite bos.net.tcp.bind_utils levels do not satisfy condition string: 07.02.0003.0016 =< 7.2.5.0 =< 07.02.0003.0016",
+                "IJ29230m7a.201117.epkg.Z: prerequisite bos.net.tcp.client levels do not satisfy condition string: 07.01.0005.0034 =< 7.2.5.0 =< 07.01.0005.0036",
+                "IJ29231m2a.201117.epkg.Z: prerequisite bos.net.tcp.bind_utils levels do not satisfy condition string: 07.02.0004.0000 =< 7.2.5.0 =< 07.02.0004.0001",
+                "IJ29231s3a.210314.epkg.Z: prerequisite bos.net.tcp.bind_utils levels do not satisfy condition string: 7.2.4.2 =< 7.2.5.0 =< 7.2.4.2",
+                "fips2100b.210323.epkg.Z: prerequisite openssl.base levels do not satisfy condition string: 20.16.102.2100 =< 1.0.2.2100 =< 20.16.102.2100"
+            ],
+            "4.2.check": [
+                "/ansible_test/work/tardir/power9_fix/IJ28226s1b.201117.epkg.Z",
+                "/ansible_test/work/tardir/bind_fix18/IJ29232s1a.201117.epkg.Z"
+            ],
+            "messages": [
+                "installed efix 1022100a is locking /usr/lib/libcrypto.a preventing the installation of 1022100b.210323.epkg.Z, remove it manually or set the \"force\" option.",
+                "installed efix 1022100a is locking /usr/lib/libssl.a preventing the installation of 1022100b.210323.epkg.Z, remove it manually or set the \"force\" option.",
+                "installed efix 1022100a is locking /usr/bin/openssl preventing the installation of 1022100b.210323.epkg.Z, remove it manually or set the \"force\" option.",
+                "installed efix 1022100a is locking /usr/bin/openssl64 preventing the installation of 1022100b.210323.epkg.Z, remove it manually or set the \"force\" option."
+            ]
+        },
+        "msg": "exit on download only",
+        "warnings": [
+            "Platform aix on host pedro1 is using the discovered Python interpreter at /usr/bin/python, but future installation of another Python interpreter could change this. See https://docs.ansible.com/ansible/2.9/reference_appendices/interpreter_discovery.html for more information."
+        ]
+    }
+}
+META: ran handlers
+META: ran handlers
+
+PLAY RECAP **************************************************************************************************************************
+pedro1                     : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

@@ -1,0 +1,15 @@
+---
+- name: FLRTVC on AIX playbook
+  hosts: pedro1
+  gather_facts: no
+  remote_user: root
+  tasks:
+  - name: testing FLRTVC
+    flrtvc:
+      apar: sec
+      path: /ansible_test
+      download_only: True
+      save_report: True
+      protocol: https
+    register: result
+  - debug: var=result

@@ -1,0 +1,18 @@
+---
+- name: Filesytem test playbook
+  hosts: pedro1
+  gather_facts: no
+  remote_user: root
+  tasks:
+  - name: Create a filesystem
+    filesystem:
+      filesystem: /home/ansible_fs_test
+      state: present
+      vg: rootvg
+      attributes: "size=1M"
+      auto_mount: yes
+  - name: Mount thefilesystem
+    mount:
+      mount_dir: /home/ansible_fs_test
+      state: mount
+

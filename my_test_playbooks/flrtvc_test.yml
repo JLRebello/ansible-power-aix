@@ -1,0 +1,31 @@
+---
+- name: FLRTVC test playbook
+  hosts: pedro1
+  gather_facts: no
+  remote_user: root
+  tasks:
+  - name: Attempting to recreate issue 70
+    flrtvc:
+      apar: all
+      download_only: True
+      filesets: bind
+      path: /ansible_test
+      save_report: True
+    register: output
+
+  - name: test another fileset
+    flrtvc:
+      apar: all
+      download_only: True
+      filesets: openssl
+      path: /ansible_test
+
+  - name: test yet another fileset
+    flrtvc:
+      apar: all
+      download_only: True
+      filesets: power9
+      path: /ansible_test
+
+  - debug:
+      var: output

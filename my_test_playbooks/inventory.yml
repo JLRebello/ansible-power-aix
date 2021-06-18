@@ -1,0 +1,4 @@
+all: # keys must be unique, i.e. only one ?hosts? per group
+    hosts:
+        pedro1:
+                ansible_host: hotfox.aus.stglabs.ibm.com

@@ -1153,10 +1153,6 @@ def main():
     global module
     global results
     global workdir
-    https_replace = ['http','ftp']
-    https_flag = False #'https' contains 'http' so we need to take an extra step to avoid 'httpss'
-    ftp_replace = ['https', 'http']
-    http_replace = ['https', 'ftp']
 
     module = AnsibleModule(
         argument_spec=dict(
@@ -1261,6 +1257,7 @@ def main():
         if clean and os.path.exists(workdir):
             shutil.rmtree(workdir, ignore_errors=True)
         module.fail_json(**results)
+    #results['meta'].update({'0.report': ["Fileset|Current Version|Type|EFix Installed|Abstract|Unsafe Versions|APARs|Bulletin URL|Download URL|CVSS Base Score|Reboot Required|Last Update|Fixed In", "openssl.base|1.0.2.2100|sec||NOT FIXED - Vulnerabilities in OpenSSL affect AIX|7.2.3.0-7.2.3.19|IJ28228 / CVE-2020-4788|https://aix.software.ibm.com/aix/efixes/security/openssl_advisory32.asc|ftp://aix.software.ibm.com/aix/efixes/security/openssl_fix32.tar|YES|02/01/2021|See Bulletin"]})
 
     if check_only:
         if clean and os.path.exists(workdir):
@@ -1274,29 +1271,18 @@ def main():
     module.debug('*** PARSE ***')
 
 
-    print("                               JULIA PARSE. PROTOCOL:                             ")
+    print("                               PROTOCOL")
     print(protocol)
-    print("                                                                                  ")
+    print("            ")
     if protocol:
-        print("                        JULIA INSIDE PROTOCOL IF IN PARSE                     ")
-        if protocol == "ftp":
-	        rep = ftp_replace
-        elif protocol == "http":
-            rep = http_replace
-        elif protocol == "https":
-            rep = https_replace
-            https_flag = True
+        print("        INSIDE PROTOCOL IF IN PARSE       ")
+        results['meta']['0.report'][1] = results['meta']['0.report'][1].replace('ftp', protocol)
+        print("          JULIA PARSE:        ")
         for x in range(len(results['meta']['0.report'])):
-            print("                                                                          ")
             print(x)
             print(":  ")
             print(results['meta']['0.report'][x])
             print("                        ")
-            if https_flag: #in case of report already having 'https' as protocol, replace 'https' with something 'https' will catch so there's no change.
-                results['meta']['0.report'][x] = results['meta']['0.report'][x].replace('https', 'ftp')
-            results['meta']['0.report'][x] = results['meta']['0.report'][x].replace(rep[0], protocol).replace(rep[1], protocol)
-            print(results['meta']['0.report'][x])
-            print("                                                                          ")
 
 
     run_parser(results['meta']['0.report'])
@@ -1305,6 +1291,16 @@ def main():
     # Download and check efixes
     # ===========================================
     module.debug('*** DOWNLOAD ***')
+
+
+    print("        JULIA DOWNLOAD         ")
+    print(*results['meta']['1.parse'], sep = ", ")
+    print("                               ")
+    if protocol:
+        print("      INSIDE PROTOCOL IF IN DOWNLOAD     ")
+        results['meta']['1.parse'][0] = results['meta']['1.parse'][0].replace('ftp', protocol)
+        print(*results['meta']['1.parse'], sep = ", ")
+
 
     run_downloader(results['meta']['1.parse'], workdir, resize_fs)
 

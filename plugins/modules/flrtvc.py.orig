@@ -99,13 +99,6 @@ options:
     - When set, a filesystem could have increased while the task returns I(changed=False).
     type: bool
     default: yes
-  protocol:
-    description:
-    - Optional setting which specifies preferred protocol to use for downloading files.
-    - When set, downloads will be attempted using set protocol.
-    type: str
-    choices: [ https, http, ftp ]
-    default: https
 notes:
   - Refer to the FLRTVC page for detail on the sctipt
     U(https://www14.software.ibm.com/support/customercare/sas/f/flrt/flrtvc.html)
@@ -957,7 +950,6 @@ def run_parser(report):
     dict_rows = csv.DictReader(report, delimiter='|')
     pattern = re.compile(r'^(http|https|ftp)://(aix.software.ibm.com|public.dhe.ibm.com)'
                          r'/(aix/ifixes/.*?/|aix/efixes/security/.*?.tar)$')
-
     rows = []
     for row in dict_rows:
         rows.append(row['Download URL'])
@@ -1153,10 +1145,6 @@ def main():
     global module
     global results
     global workdir
-    https_replace = ['http','ftp']
-    https_flag = False #'https' contains 'http' so we need to take an extra step to avoid 'httpss'
-    ftp_replace = ['https', 'http']
-    http_replace = ['https', 'ftp']
 
     module = AnsibleModule(
         argument_spec=dict(
@@ -1171,7 +1159,6 @@ def main():
             check_only=dict(required=False, type='bool', default=False),
             download_only=dict(required=False, type='bool', default=False),
             extend_fs=dict(required=False, type='bool', default=True),
-            protocol=dict(required=False, type='str', choices=['https', 'http', 'ftp']),
         ),
         supports_check_mode=True
     )
@@ -1211,7 +1198,6 @@ def main():
     check_only = module.params['check_only']
     download_only = module.params['download_only']
     resize_fs = module.params['extend_fs']
-    protocol = module.params['protocol']
 
     # Create working directory if needed
     workdir = os.path.abspath(os.path.join(flrtvc_params['dst_path'], 'work'))
@@ -1272,40 +1258,12 @@ def main():
     # Parse flrtvc report
     # ===========================================
     module.debug('*** PARSE ***')
-
-
-    print("                               JULIA PARSE. PROTOCOL:                             ")
-    print(protocol)
-    print("                                                                                  ")
-    if protocol:
-        print("                        JULIA INSIDE PROTOCOL IF IN PARSE                     ")
-        if protocol == "ftp":
-	        rep = ftp_replace
-        elif protocol == "http":
-            rep = http_replace
-        elif protocol == "https":
-            rep = https_replace
-            https_flag = True
-        for x in range(len(results['meta']['0.report'])):
-            print("                                                                          ")
-            print(x)
-            print(":  ")
-            print(results['meta']['0.report'][x])
-            print("                        ")
-            if https_flag: #in case of report already having 'https' as protocol, replace 'https' with something 'https' will catch so there's no change.
-                results['meta']['0.report'][x] = results['meta']['0.report'][x].replace('https', 'ftp')
-            results['meta']['0.report'][x] = results['meta']['0.report'][x].replace(rep[0], protocol).replace(rep[1], protocol)
-            print(results['meta']['0.report'][x])
-            print("                                                                          ")
-
-
     run_parser(results['meta']['0.report'])
 
     # ===========================================
     # Download and check efixes
     # ===========================================
     module.debug('*** DOWNLOAD ***')
-
     run_downloader(results['meta']['1.parse'], workdir, resize_fs)
 
     if download_only:
