@@ -105,7 +105,6 @@ options:
     - When set, downloads will be attempted using set protocol.
     type: str
     choices: [ https, http, ftp ]
-    default: https
 notes:
   - Refer to the FLRTVC page for detail on the sctipt
     U(https://www14.software.ibm.com/support/customercare/sas/f/flrt/flrtvc.html)
