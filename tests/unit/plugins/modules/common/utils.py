@@ -44,3 +44,5 @@ lsfs_output_path = os.path.dirname(os.path.abspath(__file__)) + "/sample_lsfs_ou
 lslv_output_path1 = os.path.dirname(os.path.abspath(__file__)) + "/sample_lslv_output1"
 lslv_output_path2 = os.path.dirname(os.path.abspath(__file__)) + "/sample_lslv_output2"
 mock_ftp_report = os.path.dirname(os.path.abspath(__file__)) + "/mock_ftp_report"
+mock_http_report = os.path.dirname(os.path.abspath(__file__)) + "/mock_http_report"
+mock_https_report = os.path.dirname(os.path.abspath(__file__)) + "/mock_https_report"

@@ -956,7 +956,6 @@ def run_parser(report):
     """
     global module
     protocol = module.params['protocol']
-
     dict_rows = csv.DictReader(report, delimiter='|')
     pattern = re.compile(r'^(http|https|ftp)://(aix.software.ibm.com|public.dhe.ibm.com)'
                          r'/(aix/ifixes/.*?/|aix/efixes/security/.*?.tar)$')
@@ -965,11 +964,10 @@ def run_parser(report):
     for row in dict_rows:
         row = row['Download URL']
         if protocol:
-            row = re.sub(r'^(http|https|ftp)', protocol, row, count=1)
+            row = re.sub(r'^(https|http|ftp)', protocol, row, count=1)
 
         rows.append(row)
     selected_rows = [row for row in rows if pattern.match(row) is not None]
-
     rows = list(set(selected_rows))  # remove duplicates
     module.debug('extracted {0} urls in the report'.format(len(rows)))
     results['meta'].update({'1.parse': rows})
@@ -1160,10 +1158,6 @@ def main():
     global module
     global results
     global workdir
-    https_replace = ['http','ftp']
-    https_flag = False #'https' contains 'http' so we need to take an extra step to avoid 'httpss'
-    ftp_replace = ['https', 'http']
-    http_replace = ['https', 'ftp']
 
     module = AnsibleModule(
         argument_spec=dict(
@@ -1279,24 +1273,6 @@ def main():
     # Parse flrtvc report
     # ===========================================
     module.debug('*** PARSE ***')
-
-
-    # if protocol:
-    #     if protocol == "ftp":
-	#         rep = ftp_replace
-    #     elif protocol == "http":
-    #         rep = http_replace
-    #     elif protocol == "https":
-    #         rep = https_replace
-    #         https_flag = True
-    #     for x in range(len(results['meta']['0.report'])):
-    #         #in case of report already having 'https' as protocol, replace 'https' with 
-    #         # something 'https' will catch so there's no change.
-    #         if https_flag: 
-    #             results['meta']['0.report'][x] = results['meta']['0.report'][x].replace('https', 'ftp')
-    #         results['meta']['0.report'][x] = \
-    #             results['meta']['0.report'][x].replace(rep[0], protocol).replace(rep[1], protocol)
-
 
     run_parser(results['meta']['0.report'])
 

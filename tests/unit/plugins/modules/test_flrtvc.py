@@ -8,12 +8,11 @@ __metaclass__ = type
 import unittest
 from unittest import mock
 import copy
-import stat
 
 from ansible_collections.ibm.power_aix.plugins.modules import flrtvc
 
 from .common.utils import (
-    AnsibleExitJson, AnsibleFailJson, exit_json, fail_json, rootdir, mock_ftp_report
+    rootdir, mock_ftp_report, mock_http_report, mock_https_report
 )
 
 params = {
@@ -28,7 +27,7 @@ params = {
         'check_only': False,
         'download_only':False,
         'extend_fs':True,
-        '/protocol': None,
+        'protocol': None,
 }
 
 init_results = {
@@ -46,95 +45,126 @@ init_results = {
     #       '5.install': []}    run_installer builds the list of installed epkgs
 }
 
+module = None
+results = None
+mock_https = []
+mock_http = []
+mock_ftp = []
+
+#this function searches each item in a dictionary for a substring.
+#it is used to check the "1.parse" part of "meta" in the report for a protocol.
+#this will determine whether the changes to the code worked as intended.
 def _search_dict(subs, s_dict):
     for x in range(len(s_dict)):
         if subs in s_dict[x]:
             return True
     return False
 
+#this function is for the case of searching for "http" in a report that has been
+#changed to be "https" because the new protocol string contains the old protocol's string.
+def _instance_count(subs, s_dict):
+    count = 0
+    for x in range(len(s_dict)):
+        if subs in s_dict[x]:
+            count += 1
+    return count
 
-class TestDownloadOnly(unittest.TestCase):
+
+class TestRunParser(unittest.TestCase):
     def setUp(self):
-        global params, init_results
-        #mock_file = open("mock_https_results.txt", "r") #mock of what the flrtvc script returns
-        # with open("/Users/juliarebello/Ansible/ansible_collections/ibm/power_aix/tests/unit/plugins/modules/mock_https_results.txt", "r") as mock_file:
-        #     mock_read = mock_file.read()
-        #     mock_https_results = ast.literal_eval(mock_read)
-        #     mock_file.close()
-
-        mock_http_results = None
-
+        global params, init_results, mock_https, mock_http, mock_ftp
         self.module = mock.Mock()
         self.module.params = params
         self.module.debug.return_value = None
-        self.run_command_environ_update.return_value = None
+
+        #mocks of what the flrtvc script returns
+        with open(mock_https_report, "r") as mock_file:
+            mock_https = mock_file.read()
+            mock_https = mock_https.split(",")
+
+        with open(mock_http_report, "r") as mock_file:
+            mock_http = mock_file.read()
+            mock_http = mock_http.split(",")
+
         with open(mock_ftp_report, "r") as mock_file:
-            mock_read = mock_file.read()
-            #mock_ftp_results = ast.literal_eval(mock_read)
+            mock_ftp = mock_file.read()
+            mock_ftp = mock_ftp.split(",")
 
     def test_http_to_ftp(self):
-        pass
+        run_flrtvc_module_path = rootdir+"flrtvc.module"
+
+        with mock.patch(run_flrtvc_module_path) as mocked_module:
+            mocked_module.params = params
+            mocked_module.params['protocol'] = "ftp"
+            flrtvc.results = init_results
+            flrtvc.results['meta'].update({'0.report': mock_http})
+            flrtvc.run_parser(flrtvc.results['meta']['0.report'])
+            self.results = copy.deepcopy(flrtvc.results)
+
+        self.assertFalse(_search_dict('http', self.results['meta']['1.parse']))
 
     def test_http_to_https(self):
-        pass
+        run_flrtvc_module_path = rootdir+"flrtvc.module"
+
+        with mock.patch(run_flrtvc_module_path) as mocked_module:
+            mocked_module.params = params
+            mocked_module.params['protocol'] = "https"
+            flrtvc.results = init_results
+            flrtvc.results['meta'].update({'0.report': mock_http})
+            flrtvc.run_parser(flrtvc.results['meta']['0.report'])
+            self.results = copy.deepcopy(flrtvc.results)
+
+        self.assertTrue(_instance_count('http', self.results['meta']['1.parse'])== \
+         _instance_count('https', self.results['meta']['1.parse']))
 
     def test_ftp_to_http(self):
-        pass
+        run_flrtvc_module_path = rootdir+"flrtvc.module"
+
+        with mock.patch(run_flrtvc_module_path) as mocked_module:
+            mocked_module.params = params
+            mocked_module.params['protocol'] = "http"
+            flrtvc.results = init_results
+            flrtvc.results['meta'].update({'0.report': mock_ftp})
+            flrtvc.run_parser(flrtvc.results['meta']['0.report'])
+            self.results = copy.deepcopy(flrtvc.results)
+
+        self.assertFalse(_search_dict('ftp', self.results['meta']['1.parse']))
 
     def test_ftp_to_https(self):
-        ansible_module_path = rootdir+"flrtvc.AnsibleModule"
-        run_flrtvc_path = rootdir+"flrtvc.run_flrtvc"
-        os_path_abspath = rootdir+"flrtvc.os.path.abspath"
-        os_path_exists = rootdir+"flrtvc.os.path.exists"
-        download_path = rootdir+"flrtvc.download"
-        unzip_path = rootdir+"flrtvc.unzip"
-        os_stat_path = rootdir+"flrtvc.os.stat"
-        self.module.params['protocol'] = "https"
-        self.results['meta']['0.report'] = self.mock_ftp_results
+        run_flrtvc_module_path = rootdir+"flrtvc.module"
 
-        with mock.patch(ansible_module_path) as mocked_ansible_module, \
-             mock.patch(os_path_abspath) as mocked_os_path_abspath, \
-             mock.patch(run_flrtvc_path) as mocked_run_flrtvc, \
-             mock.patch(os_path_exists) as mocked_os_path_exists, \
-             mock.patch(download_path) as mocked_download, \
-             mock.patch(unzip_path) as mocked_unzip, \
-             mock.patch(os_stat_path) as mocked_os_stat:
-            mocked_run_flrtvc.return_value = True
-            mocked_os_path_abspath.side_effect = [ 
-                '/var/adm/ansible/work', 
-                '/usr/bin', 
-                '/usr/bin/flrtvc.ksh',
-                '/var/adm/ansible/work/FLRTVC-latest.zip'
-            ]
-            mocked_os_path_exists.return_value = False
-            mocked_download.return_value = True
-            mocked_unzip.return_value = True
-            flrtvc_stat = mock.Mock()
-            flrtvc_stat.st_mode = stat.S_IEXEC
-            mocked_os_stat.return_value = flrtvc_stat
+        with mock.patch(run_flrtvc_module_path) as mocked_module:
+            mocked_module.params = params
+            mocked_module.params['protocol'] = "https"
+            flrtvc.results = init_results
+            flrtvc.results['meta'].update({'0.report': mock_ftp})
+            flrtvc.run_parser(flrtvc.results['meta']['0.report'])
+            self.results = copy.deepcopy(flrtvc.results)
 
-            mocked_ansible_module.return_value = self.module
-            with self.assertRaises(AnsibleExitJson) as result:
-                flrtvc.main()
-        
-        print(self.results['meta']['0.report'])
-        self.assertFalse(_search_dict('ftp', self.results['meta']['0.report']))
         self.assertFalse(_search_dict('ftp', self.results['meta']['1.parse']))
-        pass
 
     def test_https_to_ftp(self):
-        pass
+        run_flrtvc_module_path = rootdir+"flrtvc.module"
+
+        with mock.patch(run_flrtvc_module_path) as mocked_module:
+            mocked_module.params = params
+            mocked_module.params['protocol'] = "ftp"
+            flrtvc.results = init_results
+            flrtvc.results['meta'].update({'0.report': mock_https})
+            flrtvc.run_parser(flrtvc.results['meta']['0.report'])
+            self.results = copy.deepcopy(flrtvc.results)
+
+        self.assertFalse(_search_dict('https', self.results['meta']['1.parse']))
 
     def test_https_to_http(self):
-        pass
+        run_flrtvc_module_path = rootdir+"flrtvc.module"
 
+        with mock.patch(run_flrtvc_module_path) as mocked_module:
+            mocked_module.params = params
+            mocked_module.params['protocol'] = "http"
+            flrtvc.results = init_results
+            flrtvc.results['meta'].update({'0.report': mock_https})
+            flrtvc.run_parser(flrtvc.results['meta']['0.report'])
+            self.results = copy.deepcopy(flrtvc.results)
 
-
-
-
-
-
-
-
-
-
+        self.assertFalse(_search_dict('https', self.results['meta']['1.parse']))
