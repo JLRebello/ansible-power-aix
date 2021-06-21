@@ -1273,14 +1273,12 @@ def main():
     # Parse flrtvc report
     # ===========================================
     module.debug('*** PARSE ***')
-
     run_parser(results['meta']['0.report'])
 
     # ===========================================
     # Download and check efixes
     # ===========================================
     module.debug('*** DOWNLOAD ***')
-
     run_downloader(results['meta']['1.parse'], workdir, resize_fs)
 
     if download_only:
