@@ -142,10 +142,7 @@ def modify_user(module):
                 pattern = re.compile(r'(yes|true|always|no|false|never)', re.IGNORECASE)
                 if val in [True, False] or re.match(pattern, str(val)):
                     val = str(val).lower()
-                if attr == 'gecos':
-                    opts += "%s=\"%s\" " % (attr, val)
-                else:
-                    opts += "%s=%s " % (attr, val)
+                opts += "%s='%s' " % (attr, val)
         if load_module_opts is not None:
             opts = load_module_opts + opts
         cmd = "chuser %s %s" % (opts, module.params['name'])
@@ -191,10 +188,7 @@ def create_user(module):
             if attr == 'load_module':
                 load_module_opts = "-R %s " % val
             else:
-                if attr == 'gecos':
-                    opts += "%s=\"%s\" " % (attr, val)
-                else:
-                    opts += "%s=%s " % (attr, val)
+                opts += "%s='%s' " % (attr, val)
         if load_module_opts is not None:
             opts = load_module_opts + opts
 
