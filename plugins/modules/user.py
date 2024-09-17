@@ -167,7 +167,7 @@ def modify_user(module):
 
 def create_user(module):
     '''
-    Create_user function creates the user with the attributes provided in the
+    TEST Create_user function creates the user with the attributes provided in the
     attribiutes field. It returns the standard output, return code and error
     for mkuser command, if any.
 
